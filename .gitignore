@@ -131,4 +131,6 @@ dmypy.json
 outputs/
 results/
 scripts/codetest/
+checkpoints/*
+output/*
 # configs/train/video_creation_anchorxia_*

@@ -8,8 +8,15 @@ import spaces
 import numpy as np
 
 from huggingface_hub import snapshot_download
+import sys
+import os
+import sys
+import torch
 
 ProjectDir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+sys.path.append(ProjectDir)
+DATA_DIR = os.path.join(ProjectDir, "data")
+CACHE_PATH = "./t2v_input_image"
 CheckpointsDir = os.path.join(ProjectDir, "checkpoints")
 ignore_video2video = False
 max_image_edge = 1280
@@ -387,7 +394,7 @@ with gr.Blocks(css=css) as demo:
 
 # Set the IP and port
 ip_address = "0.0.0.0"  # Replace with your desired IP address
-port_number = 7860  # Replace with your desired port number
+port_number = 7861  # Replace with your desired port number
 
 
 demo.queue().launch(

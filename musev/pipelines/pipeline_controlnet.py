@@ -1662,7 +1662,7 @@ class MusevControlNetPipeline(
         num_channels_latents = self.unet.config.in_channels
         if self.print_idx == 0:
             logger.debug(f"pipeline controlnet, start prepare latents")
-
+        print(f'#####device:{device}')
         latents = self.prepare_latents(
             batch_size=batch_size * num_videos_per_prompt,
             num_channels_latents=num_channels_latents,

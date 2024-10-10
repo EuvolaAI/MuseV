@@ -22,6 +22,12 @@ from mmcm.utils.task_util import fiss_tasks, generate_tasks as generate_tasks_fr
 from mmcm.vision.utils.data_type_util import is_video, is_image, read_image_as_5d
 from mmcm.utils.str_util import clean_str_for_save
 from mmcm.vision.data.video_dataset import DecordVideoDataset
+
+file_dir = os.path.dirname(__file__)
+PROJECT_DIR = os.path.join(os.path.dirname(__file__), "../..")
+import sys
+sys.path.append(PROJECT_DIR)
+DATA_DIR = os.path.join(PROJECT_DIR, "data")
 from musev.auto_prompt.util import generate_prompts
 
 
@@ -42,13 +48,7 @@ from musev.models.referencenet import ReferenceNet2D
 from musev.models.unet_loader import load_unet_by_name
 from musev.utils.util import save_videos_grid_with_opencv
 from musev import logger
-
 logger.setLevel("INFO")
-
-file_dir = os.path.dirname(__file__)
-PROJECT_DIR = os.path.join(os.path.dirname(__file__), "../..")
-DATA_DIR = os.path.join(PROJECT_DIR, "data")
-
 
 # TODO：use group to group arguments
 def parse_args():
@@ -547,7 +547,9 @@ args = parse_args()
 print("args")
 pprint(args.__dict__)
 print("\n")
-
+torch.cuda.empty_cache()
+print(f"####################")
+torch.cuda.memory_summary(device=0, abbreviated=False)
 logger.setLevel(args.log_level)
 overwrite = args.overwrite
 cross_attention_dim = args.cross_attention_dim
@@ -686,7 +688,7 @@ if len(sd_model_params_dict) == 0:
             " ".join(list(sd_model_params_dict_src.keys()))
         )
     )
-print("running model, T2I SD")
+print("text2video 689 running model, T2I SD")
 pprint(sd_model_params_dict)
 
 # lcm parameters
