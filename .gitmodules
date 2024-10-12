@@ -9,3 +9,9 @@
 	path = diffusers
 	url = https://github.com/TMElyralab/diffusers.git
 	branch = tme
+[submodule "IP-Adapter"]
+	path = IP-Adapter
+	url = https://github.com/tencent-ailab/IP-Adapter.git
+[submodule "CLIP"]
+	path = CLIP
+	url = https://github.com/openai/CLIP.git
